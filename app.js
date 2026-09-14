@@ -16,7 +16,7 @@ let saved = store.get("anbu-saved", []); // [id]
 // ---------- render ----------
 const catGrid = $("#catGrid");
 catGrid.innerHTML = CATEGORIES.map(c => `
-  <figure class="cat-card reveal" data-cat="${c.key}">
+  <figure class="cat-card reveal" data-cat="${c.key}" tabindex="0" role="button" aria-label="Browse ${c.key}">
     <img loading="lazy" src="${c.img}" alt="${c.key}">
     <figcaption><b>${c.key}</b><span>${c.tag}</span></figcaption>
   </figure>`).join("");
@@ -38,7 +38,7 @@ function renderProducts() {
     (fType === "All" || p.type === fType) &&
     (fFinish === "All finishes" || p.finish === fFinish));
   $("#productGrid").innerHTML = list.length ? list.map(p => `
-    <article class="product-card reveal in" data-id="${p.id}">
+    <article class="product-card reveal in" data-id="${p.id}" tabindex="0" role="button" aria-label="View ${p.name}">
       <div class="pc-media"><img loading="lazy" src="${p.img}" alt="${p.name}"></div>
       <div class="pc-body">
         <p class="pc-type">${p.type.toUpperCase()}</p>
@@ -98,6 +98,12 @@ $("#mSave").onclick = () => {
   toast(saved.includes(current.id) ? "Saved to your list ♡" : "Removed from saved");
 };
 document.addEventListener("click", e => { if (e.target.matches("[data-close]")) closeOverlays(); });
+// keyboard activation for card "buttons"
+document.addEventListener("keydown", e => {
+  if (e.key !== "Enter" && e.key !== " ") return;
+  const el = e.target.closest?.('[role="button"][data-id], [role="button"][data-cat]');
+  if (el) { e.preventDefault(); el.click(); }
+});
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeOverlays(); });
 
 // ---------- cart ----------
@@ -113,6 +119,12 @@ function setQty(id, q) {
   cart = next; store.set("anbu-cart", cart); updateBadges(); renderCart();
 }
 function renderCart() {
+  // prune ids that no longer exist in the catalog (data.js was edited)
+  const stale = Object.keys(cart).filter(id => !PRODUCTS.some(p => p.id === id));
+  if (stale.length) {
+    cart = Object.fromEntries(Object.entries(cart).filter(([id]) => !stale.includes(id)));
+    store.set("anbu-cart", cart); updateBadges();
+  }
   const ids = Object.keys(cart);
   const wrap = $("#cartItems");
   if (!ids.length) {

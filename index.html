@@ -118,7 +118,7 @@
       <form class="quote-form reveal" id="quoteForm">
         <input required name="name" placeholder="Your name">
         <input required name="phone" placeholder="Phone / WhatsApp number" inputmode="tel">
-        <select name="need">
+        <select name="need" aria-label="What are you looking for">
           <option>Marble</option><option>Granite</option><option>Tiles</option><option>Mixed / Full project</option>
         </select>
         <textarea name="details" rows="3" placeholder="Approx. area (sq.ft), city, timeline…"></textarea>
@@ -151,7 +151,7 @@
 <!-- PRODUCT MODAL -->
 <div class="modal" id="productModal" hidden>
   <div class="modal-backdrop" data-close></div>
-  <div class="modal-card" role="dialog" aria-modal="true">
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="mName">
     <button class="modal-close" data-close aria-label="Close">×</button>
     <div class="modal-media"><img id="mImg" alt="" class="zoomable"></div>
     <div class="modal-info">
