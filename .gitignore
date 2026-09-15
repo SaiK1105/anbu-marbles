@@ -1,0 +1,11 @@
+assets/extracted/
+assets/records/
+assets/*.zip
+assets/contact-sheet.jpg
+assets/site-full.jpg
+assets/logo-shot.png
+assets/logo-preview.html
+assets/instagram-posts.json
+assets/post-image-map.json
+assets/Client*
+.playwright-mcp/

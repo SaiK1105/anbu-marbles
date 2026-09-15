@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 80" width="240" height="80" role="img" aria-label="Anbu Marbles">
+  <!-- tapered crescent + accent tick over the A -->
+  <path d="M50 6A34 34 0 0 0 50 66Q27 36 50 6Z" fill="#EECE2B"/>
+  <path d="M60 26Q69 13 80 7" fill="none" stroke="#EECE2B" stroke-width="5" stroke-linecap="round"/>
+  <!-- ANBU marker caps -->
+  <g fill="none" stroke="#E2503A" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M90 12C83 31 73 46 62 64"/>
+    <path d="M90 12C96 26 103 38 110 50"/>
+    <path d="M120 50L123 13L157 50L155 13"/>
+    <path d="M168 50L170 13C186 11 196 17 195 23C194 29 183 31 174 31C188 30 197 35 196 42C195 49 181 52 169 50"/>
+    <path d="M208 13C206 32 206 46 216 48C226 50 230 40 230 28L232 13"/>
+    <path d="M59 42Q82 36 105 34" stroke-width="6"/>
+  </g>
+  <text x="104" y="74" textLength="128" font-family="'Helvetica Neue',Arial,Helvetica,sans-serif" font-size="12.5" font-weight="700" fill="#E2503A">MARBLES</text>
+</svg>
